@@ -48,6 +48,7 @@ class LoginForm(forms.Form):
             raise forms.ValidationError("This email is not registered.")
         return email
 
+
 class AddressCreationForm(forms.ModelForm):
     user = forms.IntegerField(required=False)
 
@@ -56,18 +57,18 @@ class AddressCreationForm(forms.ModelForm):
         exclude = '__all__'
 
 
-class RegisterForm(forms.Form):
-    email = forms.EmailField(widget=forms.TextInput(attrs={"class": "form-control"}))
-
-    def clean_email(self):
-        email = self.cleaned_data.get('email')
-        if User.objects.filter(email=email).exists():
-            raise ValidationError("این ایمیل قبلاً ثبت شده است.")
-        return email
-
+# class RegisterForm(forms.Form):
+#     email = forms.EmailField(widget=forms.TextInput(attrs={"class": "form-control"}))
+#
+#     def clean_email(self):
+#         email = self.cleaned_data.get('email')
+#         if User.objects.filter(email=email).exists():
+#             raise ValidationError("این ایمیل قبلاً ثبت شده است.")
+#         return email
 
 class VerifyCodeForm(forms.Form):
     email = forms.EmailField(label="ایمیل")
+    password = forms.CharField(label='پسورد')
     code = forms.CharField(label="کد", max_length=6)
 
     def clean(self):

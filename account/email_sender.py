@@ -14,13 +14,9 @@ def send_verification_code(email):
         defaults={'code': code, 'created_at': timezone.now()}
     )
 
-    subject = str(Header("کد تأیید ثبت‌نام", "utf-8"))
-    message = f"کد شما: {code}"
-    from_email = str(Header("kiarashgholami1383@gmail.com", 'utf-8'))
-
     send_mail(
-        subject=subject,
-        message=message,
-        from_email=from_email,
+        subject="کد تأیید ثبت‌نام",
+        message=f"کد شما: {code}",
+        from_email="kiarashgholami1383@gmail.com",
         recipient_list=[email],
     )

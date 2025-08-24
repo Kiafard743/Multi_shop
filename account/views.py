@@ -1,15 +1,10 @@
-from email.header import Header
-
-from django.contrib.auth import authenticate, login
-from django.http import JsonResponse
+from django.contrib.auth import authenticate, login, get_user_model
 from django.shortcuts import render, redirect
 from django.urls import reverse
 
 from account.email_sender import send_verification_code
-from account.forms import LoginForm, AddressCreationForm, RegisterForm, VerifyCodeForm, UserCreationForm
+from account.forms import LoginForm, AddressCreationForm, VerifyCodeForm, UserCreationForm
 from django.views import View
-
-from account.models import EmailVerification
 
 
 class LoginView(View):
@@ -58,10 +53,9 @@ class RegisterView(View):
         if form.is_valid():
             cd = form.cleaned_data
             email = cd['email']
-            email2 = str(Header(email, "utf-8"))
-            print(email2)
-            send_verification_code(email2)
-            return redirect(reverse('account:verifycode') + f'?email={cd["email"]}')
+            password = cd['password1']
+            send_verification_code(email)
+            return redirect(reverse('account:verifycode') + f'?email={email}&password={password}')
         return render(request, 'account/register.html', {'form': form})
 
     # def post(self, request):
@@ -76,6 +70,8 @@ class RegisterView(View):
 #         send_verification_code(email)
 #         return JsonResponse({"message": "کد برای ایمیل ارسال شد."})
 
+User = get_user_model()
+
 
 class VerifyCode(View):
     def get(self, request):
@@ -84,10 +80,14 @@ class VerifyCode(View):
 
     def post(self, request):
         email = request.GET.get('email')
+        password = request.GET.get('password')
         post_data = request.POST.copy()
         post_data['email'] = email
+        post_data['password'] = password
         form = VerifyCodeForm(post_data)
         if form.is_valid():
+            user = User.objects.create_user(email=email, password=password)
+            login(request, user)
             return redirect(reverse('home:home'))
         return render(request, 'account/verify_code.html', {'form': form})
 
@@ -101,5 +101,3 @@ class VerifyCode(View):
     #             return JsonResponse({"message": "کد صحیح است، ادامه بده."})
     #         except EmailVerification.DoesNotExist:
     #             return JsonResponse({"error": "کد اشتباه است."}, status=400)
-
-
