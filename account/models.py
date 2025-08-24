@@ -1,25 +1,25 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
+from django.utils import timezone
+import datetime
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, phone, password=None):
-
-        if not phone:
+    def create_user(self, email, password=None):
+        if not email:
             raise ValueError("Users must have an phone number")
 
         user = self.model(
-            phone=phone
+            email=email
         )
 
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, phone, password=None):
-
+    def create_superuser(self, email, password=None):
         user = self.create_user(
-            phone,
+            email,
             password=password,
         )
         user.is_admin = True
@@ -35,17 +35,17 @@ class User(AbstractBaseUser):
         blank=True,
         unique=True,
     )
-    phone = models.CharField(verbose_name="phone number", max_length=12, unique=True)
+    # phone = models.CharField(verbose_name="phone number", max_length=12, unique=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
 
     objects = UserManager()
 
-    USERNAME_FIELD = "phone"
+    USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
     def __str__(self):
-        return self.phone
+        return str(self.email)
 
     def has_perm(self, perm, obj=None):
         return True
@@ -66,9 +66,24 @@ class Address(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='addresses')
     address = models.CharField(max_length=255)
     fullname = models.CharField(max_length=255)
-    email = models.EmailField(blank=True, null=True)
+    email = models.EmailField(blank=True, null=True, unique=True)
     phone = models.CharField(max_length=12, unique=True)
     postal_code = models.CharField(max_length=12, unique=True)
 
     def __str__(self):
-        return self.user.phone
+        return self.user.email
+
+
+class EmailVerification(models.Model):
+    email = models.EmailField(unique=True)
+    code = models.CharField(max_length=6)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def is_expired(self):
+        return timezone.now() > self.created_at + datetime.timedelta(minutes=5)
+
+    def __str__(self):
+        return str(self.email)
+
+    class Meta:
+        db_table = "email_verifications"

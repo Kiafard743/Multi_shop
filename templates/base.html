@@ -24,14 +24,23 @@
         <div class="col-lg-6 text-center text-lg-right">
             <div class="d-inline-flex align-items-center">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My
-                        Account
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <button class="dropdown-item" type="button">Sign in</button>
-                        <button class="dropdown-item" type="button">Sign up</button>
-                    </div>
-                </div>
+    <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
+        My Account
+    </button>
+    <div class="dropdown-menu dropdown-menu-right">
+        {% if user.is_authenticated %}
+            <!-- وقتی کاربر وارد شده -->
+            <form method="post" action="{% url 'account:logout' %}">
+                {% csrf_token %}
+                <button class="dropdown-item" type="submit">Logout</button>
+            </form>
+        {% else %}
+            <!-- وقتی کاربر وارد نشده -->
+            <a class="dropdown-item" href="{% url 'account:login' %}">Login</a>
+            <a class="dropdown-item" href="{% url 'account:register' %}">Register</a>
+        {% endif %}
+    </div>
+</div>
             </div>
             <div class="d-inline-flex align-items-center d-block d-lg-none">
                 <a href="" class="btn px-0 ml-2">

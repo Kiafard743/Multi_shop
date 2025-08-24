@@ -4,58 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ccba087-ae5a-4f76-964a-2d7bd54f7246" name="Changes" comment="create project1">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/account/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/account/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/account/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/account/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/account/migrations/0003_address.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/account/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/account/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/account/templates/account/add_address.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/account/templates/account/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/account/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/account/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/account/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cart/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cart/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cart/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cart/cart_module.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cart/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cart/migrations/0002_order_is_paid.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cart/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cart/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cart/templates/cart/cart.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cart/templates/cart/order_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cart/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cart/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cart/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/templates/home/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/products/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/products/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/products/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/products/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/products/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/products/templates/products/detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/products/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/products/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/products/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/includes/head.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Multi_shop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Multi_shop.iml" afterDir="false" />
+    <list default="true" id="3ccba087-ae5a-4f76-964a-2d7bd54f7246" name="Changes" comment="part 2">
+      <change afterPath="$PROJECT_DIR$/account/email_sender.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/account/templates/account/register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/account/templates/account/verify_code.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Multi_shop/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Multi_shop/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Multi_shop/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Multi_shop/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/templates/account/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/account/templates/account/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/templates/home/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/home/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +58,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "django.template.preview.state": "SHOW_EDITOR",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/Lenovo/Desktop/second/Multi_shop/cart/templates/cart",
+    "last_opened_file_path": "C:/Users/Lenovo/Desktop/second/Multi_shop/home/templates/home",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -108,9 +70,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Lenovo\Desktop\second\Multi_shop\home\templates\home" />
       <recent name="C:\Users\Lenovo\Desktop\second\Multi_shop\cart\templates\cart" />
       <recent name="C:\Users\Lenovo\Desktop\second\Multi_shop\products\templates\products" />
-      <recent name="C:\Users\Lenovo\Desktop\second\Multi_shop\home\templates\home" />
       <recent name="C:\Users\Lenovo\Desktop\second\Multi_shop\statics" />
     </key>
   </component>
@@ -168,7 +130,11 @@
       <workItem from="1753605307522" duration="63000" />
       <workItem from="1753687852294" duration="1220000" />
       <workItem from="1753712890682" duration="672000" />
-      <workItem from="1755326702003" duration="19793000" />
+      <workItem from="1755326702003" duration="35135000" />
+      <workItem from="1755765574858" duration="8150000" />
+      <workItem from="1755785462401" duration="4071000" />
+      <workItem from="1755845505988" duration="20528000" />
+      <workItem from="1756018688849" duration="2567000" />
     </task>
     <task id="LOCAL-00001" summary="create project1">
       <option name="closed" value="true" />
@@ -178,7 +144,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752219566688</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="part 2">
+      <option name="closed" value="true" />
+      <created>1755604818996</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1755604818996</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,6 +160,18 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="create project1" />
-    <option name="LAST_COMMIT_MESSAGE" value="create project1" />
+    <MESSAGE value="part 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="part 2" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/account/email_sender.py</url>
+          <line>25</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
