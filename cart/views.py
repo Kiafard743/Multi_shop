@@ -1,12 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from .cart_module import Cart
-from django.contrib.auth.mixins import LoginRequiredMixin
 from products.models import Product
 from .models import Order, OrderItem, DiscountCode
 
 
-# Create your views here.
 class CartDetailView(View):
     def get(self, request):
         cart = Cart(request)
@@ -16,10 +14,13 @@ class CartDetailView(View):
 class CartAddView(View):
     def post(self, request, pk):
         product = get_object_or_404(Product, id=pk)
-        color, size, quantity = request.POST['color'], request.POST['size'], request.POST['quantity']
-        # print(color, size, quantity)
+        color = request.POST.get('color', 'empty')
+        size = request.POST.get('size', 'empty')
+        quantity = request.POST.get('quantity', 1)
+
         cart = Cart(request)
         cart.add(quantity, color, size, product)
+
         return redirect('cart:cart_detail')
 
 

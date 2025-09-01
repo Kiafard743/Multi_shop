@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% load querystring_tags %}
+
+{% block main %}
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <!-- Shop Sidebar Start -->
+            <div class="col-lg-3 col-md-4">
+                <form method="get">
+                    <!-- Price Start -->
+                    <h5 class="section-title position-relative text-uppercase mb-3">
+                        <span class="bg-secondary pr-3">Filter by price</span>
+                    </h5>
+                    <div class="bg-light p-4 mb-30">
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <label for="min-price">Min</label>
+                            <input type="number" name="min_price" id="min-price" value="{{ min_price }}">
+                        </div>
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <label for="max-price">Max</label>
+                            <input type="number" name="max_price" id="max-price" value="{{ max_price }}">
+                        </div>
+                    </div>
+                    <!-- Price End -->
+
+                    <!-- Color Start -->
+                    <h5 class="section-title position-relative text-uppercase mb-3">
+                        <span class="bg-secondary pr-3">Filter by color</span>
+                    </h5>
+                    <div class="bg-light p-4 mb-30">
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" name="color" value="Black" class="custom-control-input" id="color-1"
+                                   {% if "Black" in selected_colors %}checked{% endif %}>
+                            <label class="custom-control-label" for="color-1">Black</label>
+                            <span class="badge border font-weight-normal"></span>
+                        </div>
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" name="color" value="White" class="custom-control-input" id="color-2"
+                                   {% if "White" in selected_colors %}checked{% endif %}>
+                            <label class="custom-control-label" for="color-2">White</label>
+                            <span class="badge border font-weight-normal"></span>
+                        </div>
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" name="color" value="Blue" class="custom-control-input" id="color-4"
+                                   {% if "Blue" in selected_colors %}checked{% endif %}>
+                            <label class="custom-control-label" for="color-4">Blue</label>
+                            <span class="badge border font-weight-normal"></span>
+                        </div>
+                    </div>
+                    <!-- Color End -->
+
+                    <!-- Size Start -->
+                    <h5 class="section-title position-relative text-uppercase mb-3">
+                        <span class="bg-secondary pr-3">Filter by size</span>
+                    </h5>
+                    <div class="bg-light p-4 mb-30">
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" name="size" value="S" class="custom-control-input" id="size-2"
+                                   {% if "S" in selected_sizes %}checked{% endif %}>
+                            <label class="custom-control-label" for="size-2">S</label>
+                            <span class="badge border font-weight-normal"></span>
+                        </div>
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" name="size" value="M" class="custom-control-input" id="size-3"
+                                   {% if "M" in selected_sizes %}checked{% endif %}>
+                            <label class="custom-control-label" for="size-3">M</label>
+                            <span class="badge border font-weight-normal"></span>
+                        </div>
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" name="size" value="L" class="custom-control-input" id="size-4"
+                                   {% if "L" in selected_sizes %}checked{% endif %}>
+                            <label class="custom-control-label" for="size-4">L</label>
+                            <span class="badge border font-weight-normal"></span>
+                        </div>
+                    </div>
+                    <!-- Size End -->
+
+                    <button type="submit" class="btn btn-primary w-100 mb-2">Apply Filters</button>
+                    <a href="{% url 'products:products_list' %}" class="btn btn-secondary w-100">Reset Filters</a>
+                </form>
+            </div>
+
+
+            <!-- Shop Sidebar End -->
+
+
+            <!-- Shop Product Start -->
+            <div class="col-lg-9 col-md-8">
+                <div class="row pb-3">
+                    <div class="col-12 pb-1">
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <div class="ml-2">
+                            </div>
+                        </div>
+                    </div>
+                    {% for product in object_list %}
+                        <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+                            <div class="product-item bg-light mb-4">
+                                <div class="product-img position-relative overflow-hidden">
+                                    <img class="img-fluid w-100" src={{ product.image.url }} alt="">
+                                    <div class="product-action">
+                                        <a class="btn btn-outline-dark btn-square" href=""><i
+                                                class="fa fa-shopping-cart"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href=""><i
+                                                class="fa fa-sync-alt"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <div class="text-center py-4">
+                                    <a class="h6 text-decoration-none text-truncate" href="">{{ product.title }}</a>
+                                    <div class="d-flex align-items-center justify-content-center mt-2">
+                                        <h5>${{ product.price }}</h5>
+                                        <h6 class="text-muted ml-2">
+                                            <del>${{ product.price }}</del>
+                                        </h6>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="col-12">
+                        <nav>
+                            <ul class="pagination justify-content-center">
+
+                                {# Previous button #}
+                                {% if page_obj.has_previous %}
+                                    <li class="page-item">
+                                        <a class="page-link"
+                                           href="?{% querystring page=page_obj.previous_page_number %}">Previous</a>
+                                    </li>
+                                {% else %}
+                                    <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                                {% endif %}
+
+                                {# Page numbers #}
+                                {% for num in page_obj.paginator.page_range %}
+                                    {% if num == page_obj.number %}
+                                        <li class="page-item active">
+                                            <a class="page-link" href="#">{{ num }}</a>
+                                        </li>
+                                    {% else %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="?{% querystring page=num %}">{{ num }}</a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+
+                                {# Next button #}
+                                {% if page_obj.has_next %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?{% querystring page=page_obj.next_page_number %}">Next</a>
+                                    </li>
+                                {% else %}
+                                    <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+                                {% endif %}
+
+                            </ul>
+                        </nav>
+                    </div>
+{% endblock %}

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'cart.apps.CartConfig',
     'widget_tweaks',
     'django_cleanup.apps.CleanupConfig',
+    'django_render_partial'
 
 ]
 
