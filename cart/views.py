@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from .cart_module import Cart
@@ -54,10 +55,19 @@ class ApplyDiscountView(View):
     def post(self, request, pk):
         order = get_object_or_404(Order, id=pk)
         code = request.POST.get('discount_code')
-        discount_code = get_object_or_404(DiscountCode, name=code)
-        if discount_code.quantity == 0 :
+        # discount_code = get_object_or_404(DiscountCode, name=code)
+
+        discount_code = DiscountCode.objects.filter(name=code).first()
+
+        if not discount_code:
+            messages.error(request, "کد تخفیف وارد شده معتبر نیست.")
             return redirect('cart:order_detail', order.id)
-        order.total_price -= order.total_price * discount_code.discount/100
+
+        if discount_code.quantity == 0:
+            messages.warning(request, "این کد تخفیف دیگر قابل استفاده نیست.")
+            return redirect('cart:order_detail', order.id)
+
+        order.total_price -= order.total_price * discount_code.discount / 100
         order.save()
         discount_code.quantity -= 1
         discount_code.save()

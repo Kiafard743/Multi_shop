@@ -7,6 +7,7 @@ from account.forms import LoginForm, AddressCreationForm, VerifyCodeForm, UserCr
 from django.views import View
 
 
+
 class LoginView(View):
     def get(self, request):
         form = LoginForm()

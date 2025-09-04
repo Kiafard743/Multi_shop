@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-lnom7$+p1#j8&k665m=v8a9-d*l5(!!z=ttmc4@00!is0n5amo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -150,3 +150,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "kiarashgholami1383@gmail.com"
 EMAIL_HOST_PASSWORD = "cdbn ealt smbu xrzo"
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://941d7935aebd.ngrok-free.app",  # URL تونل شما
+]

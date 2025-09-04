@@ -6,40 +6,32 @@
 
 
 <head>
-    
+
     {% include "includes/head.html" %}
 
-    </head>
+</head>
 <body>
 <!-- Top bar Start -->
 <div class="container-fluid">
     <div class="row bg-secondary py-1 px-xl-5">
-{#        <div class="col-lg-6 d-none d-lg-block">#}
-{#            <div class="d-inline-flex align-items-center h-100">#}
-{#                <a class="text-body mr-3" href="">About</a>#}
-{#                <a class="text-body mr-3" href="">Contact</a>#}
-{#                <a class="text-body mr-3" href="">Help</a>#}
-{#                <a class="text-body mr-3" href="">FAQs</a>#}
-{#            </div>#}
-{#        </div>#}
         <div class="col-lg-6 text-center text-lg-right">
             <div class="d-inline-flex align-items-center">
                 <div class="btn-group">
-    <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
-        My Account
-    </button>
-    <div class="dropdown-menu dropdown-menu-right">
-        {% if user.is_authenticated %}
-            <form method="post" action="{% url 'account:logout' %}">
-                {% csrf_token %}
-                <button class="dropdown-item" type="submit">Logout</button>
-            </form>
-        {% else %}
-            <a class="dropdown-item" href="{% url 'account:login' %}">Login</a>
-            <a class="dropdown-item" href="{% url 'account:register' %}">Register</a>
-        {% endif %}
-    </div>
-</div>
+                    <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
+                        My Account
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        {% if user.is_authenticated %}
+                            <form method="post" action="{% url 'account:logout' %}">
+                                {% csrf_token %}
+                                <button class="dropdown-item" type="submit">Logout</button>
+                            </form>
+                        {% else %}
+                            <a class="dropdown-item" href="{% url 'account:login' %}">Login</a>
+                            <a class="dropdown-item" href="{% url 'account:register' %}">Register</a>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
             <div class="d-inline-flex align-items-center d-block d-lg-none">
                 <a href="" class="btn px-0 ml-2">
@@ -57,21 +49,38 @@
     </div>
     <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
         <div class="col-lg-4">
-            <a href="" class="text-decoration-none">
+            <a href="{% url 'home:home' %}" class="text-decoration-none">
                 <span class="h1 text-uppercase text-primary bg-dark px-2">Multi</span>
                 <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Shop</span>
             </a>
         </div>
         <div class="col-lg-4 col-6 text-left">
-            <form action="">
+            <form method="get" action="{% url 'products:products_list' %}">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for products">
+                    <input type="text" class="form-control" name="q"
+                           placeholder="Search for products"
+                           value="{{ request.GET.q|default_if_none:'' }}">
                     <div class="input-group-append">
-                            <span class="input-group-text bg-transparent text-primary">
-                                <i class="fa fa-search"></i>
-                            </span>
+                        <button class="input-group-text bg-transparent text-primary" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
                     </div>
                 </div>
+                {% for category in selected_categories %}
+                    <input type="hidden" name="category" value="{{ category }}">
+                {% endfor %}
+                {% for color in selected_colors %}
+                    <input type="hidden" name="color" value="{{ color }}">
+                {% endfor %}
+                {% for size in selected_sizes %}
+                    <input type="hidden" name="size" value="{{ size }}">
+                {% endfor %}
+                {% if min_price %}
+                    <input type="hidden" name="min_price" value="{{ min_price }}">
+                {% endif %}
+                {% if max_price %}
+                    <input type="hidden" name="max_price" value="{{ max_price }}">
+                {% endif %}
             </form>
         </div>
         <div class="col-lg-4 col-6 text-right">
@@ -109,42 +118,9 @@
                 <div class="col-md-4 mb-5">
                     <h5 class="text-secondary text-uppercase mb-4">Quick Shop</h5>
                     <div class="d-flex flex-column justify-content-start">
-                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
-                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shop Detail</a>
-                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
-                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
-                        <a class="text-secondary" href="#"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-5">
-                    <h5 class="text-secondary text-uppercase mb-4">My Account</h5>
-                    <div class="d-flex flex-column justify-content-start">
-                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
-                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shop Detail</a>
-                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
-                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
-                        <a class="text-secondary" href="#"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-5">
-                    <h5 class="text-secondary text-uppercase mb-4">Newsletter</h5>
-                    <p>Duo stet tempor ipsum sit amet magna ipsum tempor est</p>
-                    <form action="">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Your Email Address">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary">Sign Up</button>
-                            </div>
-                        </div>
-                    </form>
-                    <h6 class="text-secondary text-uppercase mt-4 mb-3">Follow Us</h6>
-                    <div class="d-flex">
-                        <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="btn btn-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
+                        <a class="text-secondary mb-2" href="{% url 'home:home' %}"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                        <a class="text-secondary mb-2" href="{% url 'products:products_list' %}"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
+                        <a class="text-secondary mb-2" href="{% url 'cart:cart_detail' %}"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
                     </div>
                 </div>
             </div>

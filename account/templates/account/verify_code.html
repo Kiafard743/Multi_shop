@@ -13,18 +13,28 @@
                     <div id="success"></div>
                     <form method="post">
                         {% csrf_token %}
-{#                        {{ form.as_p }}#}
+
                         {% if form.non_field_errors %}
-                            <div class="error">{{ form.non_field_errors }}</div>
+                            <div class="text-danger mb-2">
+                                {% for error in form.non_field_errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
                         {% endif %}
-                        <div class="control-group">
+
+                        <div class="control-group mb-3">
+                            <label for="{{ form.code.id_for_label }}">کد تایید</label>
                             {{ form.code }}
+                            {% for error in form.code.errors %}
+                                <p class="text-danger">{{ error }}</p>
+                            {% endfor %}
                         </div>
+
                         <div>
-                            <button class="btn btn-primary py-2 px-4" type="submit" id="login">confirm
-                            </button>
+                            <button class="btn btn-primary py-2 px-4" type="submit" id="login">submit</button>
                         </div>
                     </form>
+
                 </div>
             </div>
 

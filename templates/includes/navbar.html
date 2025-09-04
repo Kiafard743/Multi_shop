@@ -12,22 +12,29 @@
                     {% for category in categories %}
                         {% if not category.parent %}
                             {% if category.subs.all %}
-                                <div class="nav-item dropdown dropright">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ category.title }}<i
-                                            class="fa fa-angle-right float-right mt-1"></i></a>
+                                <div class="nav-item dropdown dropright d-flex align-items-center">
+                                    <a href="{% url 'products:products_list' %}?category={{ category.slug }}"
+                                       class="nav-link flex-grow-1">
+                                        {{ category.title }}
+                                    </a>
+                                    <a href="#" class="nav-link dropdown-toggle px-2" data-toggle="dropdown">
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
                                     <div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
                                         {% for sub in category.subs.all %}
-                                            <a href="" class="dropdown-item">{{ sub.title }}</a>
-
+                                            <a href="{% url 'products:products_list' %}?category={{ sub.slug }}"
+                                               class="dropdown-item">{{ sub.title }}</a>
                                         {% endfor %}
                                     </div>
                                 </div>
                             {% else %}
-                                <a href="" class="nav-item nav-link">{{ category.title }}</a>
+                                <a href="{% url 'products:products_list' %}?category={{ category.slug }}"
+                                   class="nav-item nav-link">{{ category.title }}</a>
                             {% endif %}
                         {% endif %}
                     {% endfor %}
                 </div>
+
             </nav>
         </div>
         <div class="col-lg-9">
@@ -42,29 +49,14 @@
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
                         <a class="nav-item nav-link active" href={% url 'home:home' %}>Home</a>
-                        <a href="shop.html" class="nav-item nav-link">Shop</a>
-                        <a href="detail.html" class="nav-item nav-link">Shop Detail</a>
+                        <a href="{% url 'products:products_list' %}" class="nav-item nav-link">Shop</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages <i
                                     class="fa fa-angle-down mt-1"></i></a>
                             <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                                <a href="cart.html" class="dropdown-item">Shopping Cart</a>
-                                <a href="checkout.html" class="dropdown-item">Checkout</a>
+                                <a href="{% url 'cart:cart_detail' %}" class="dropdown-item">Shopping Cart</a>
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
-                    </div>
-                    <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-                        <a href="" class="btn px-0">
-                            <i class="fas fa-heart text-primary"></i>
-                            <span class="badge text-secondary border border-secondary rounded-circle"
-                                  style="padding-bottom: 2px;">0</span>
-                        </a>
-                        <a href="" class="btn px-0 ml-3">
-                            <i class="fas fa-shopping-cart text-primary"></i>
-                            <span class="badge text-secondary border border-secondary rounded-circle"
-                                  style="padding-bottom: 2px;">0</span>
-                        </a>
                     </div>
                 </div>
             </nav>

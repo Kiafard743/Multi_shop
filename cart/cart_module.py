@@ -44,6 +44,7 @@ class Cart:
     def total(self):
         cart = self.cart.values()
         total = sum(int(item["price"]) * int(item['quantity']) for item in cart)
+        total = total + 160
         return total
 
     def delete(self, id):
