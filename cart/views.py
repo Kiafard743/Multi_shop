@@ -55,7 +55,6 @@ class ApplyDiscountView(View):
     def post(self, request, pk):
         order = get_object_or_404(Order, id=pk)
         code = request.POST.get('discount_code')
-        # discount_code = get_object_or_404(DiscountCode, name=code)
 
         discount_code = DiscountCode.objects.filter(name=code).first()
 

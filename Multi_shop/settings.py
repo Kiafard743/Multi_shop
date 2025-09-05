@@ -79,8 +79,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Multi_shop.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+
 
 DATABASES = {
     'default': {
@@ -89,8 +88,6 @@ DATABASES = {
     }
 }
 
-# Password validation
-# https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -107,8 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Internationalization
-# https://docs.djangoproject.com/en/5.2/topics/i18n/
+
 
 LANGUAGE_CODE = 'en-us'
 
@@ -120,16 +116,12 @@ USE_TZ = True
 
 LOGIN_URL = '/account/login/'
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
 MEDIA_URL = 'media/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "statics")]
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -152,5 +144,5 @@ EMAIL_HOST_PASSWORD = "cdbn ealt smbu xrzo"
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://941d7935aebd.ngrok-free.app",  # URL تونل شما
+    "https://941d7935aebd.ngrok-free.app",
 ]

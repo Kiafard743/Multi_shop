@@ -3,7 +3,6 @@ from django.views.generic import DetailView, TemplateView, ListView
 from products.models import Product, Category
 
 
-# Create your views here.
 class ProductDetailView(DetailView):
     template_name = 'products/detail.html'
     model = Product

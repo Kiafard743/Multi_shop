@@ -1,9 +1,6 @@
 import random
-from email.header import Header
-
 from django.core.mail import send_mail
 from django.utils import timezone
-
 from account.models import EmailVerification
 
 

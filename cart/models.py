@@ -1,10 +1,7 @@
 from django.db import models
-
 from account.models import User
 from products.models import Product
 
-
-# Create your models here.
 
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders')
@@ -16,7 +13,7 @@ class Order(models.Model):
     is_paid = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.user.phone
+        return self.phone
 
 
 class OrderItem(models.Model):
@@ -38,4 +35,3 @@ class DiscountCode(models.Model):
 
     def __str__(self):
         return self.name
-

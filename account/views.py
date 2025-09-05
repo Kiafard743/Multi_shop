@@ -1,7 +1,6 @@
 from django.contrib.auth import authenticate, login, get_user_model
 from django.shortcuts import render, redirect
 from django.urls import reverse
-
 from account.email_sender import send_verification_code
 from account.forms import LoginForm, AddressCreationForm, VerifyCodeForm, UserCreationForm
 from django.views import View
@@ -59,17 +58,6 @@ class RegisterView(View):
             return redirect(reverse('account:verifycode') + f'?email={email}&password={password}')
         return render(request, 'account/register.html', {'form': form})
 
-    # def post(self, request):
-    #     email = request.POST.get("email")
-    #     send_verification_code(email)
-    #     return redirect('account:verifycode' + f'?email={cd[email]}')
-
-
-# def request_verification_code(request):
-#     if request.method == "POST":
-#         email = request.POST.get("email")
-#         send_verification_code(email)
-#         return JsonResponse({"message": "کد برای ایمیل ارسال شد."})
 
 User = get_user_model()
 
@@ -92,13 +80,3 @@ class VerifyCode(View):
             return redirect(reverse('home:home'))
         return render(request, 'account/verify_code.html', {'form': form})
 
-    # def post(self, request):
-    #         email = request.GET.get("email")
-    #         code = request.POST.get("code")
-    #         try:
-    #             verification = EmailVerification.objects.get(email=email, code=code)
-    #             if verification.is_expired():
-    #                 return JsonResponse({"error": "کد منقضی شده."}, status=400)
-    #             return JsonResponse({"message": "کد صحیح است، ادامه بده."})
-    #         except EmailVerification.DoesNotExist:
-    #             return JsonResponse({"error": "کد اشتباه است."}, status=400)
