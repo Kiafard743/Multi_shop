@@ -1,4 +1,7 @@
+from unicodedata import bidirectional
+
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from .cart_module import Cart
@@ -32,7 +35,7 @@ class CartDeleteView(View):
         return redirect('cart:cart_detail')
 
 
-class OrderDetailView(View):
+class OrderDetailView(LoginRequiredMixin,View):
     def get(self, request, pk):
         order = get_object_or_404(Order, id=pk)
         return render(request, "cart/order_detail.html", {'order': order})

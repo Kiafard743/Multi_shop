@@ -1,28 +1,19 @@
 from django.contrib.auth import authenticate, login, get_user_model
 from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from account.email_sender import send_verification_code
-from account.forms import LoginForm, AddressCreationForm, VerifyCodeForm, UserCreationForm
+from account.forms import AddressCreationForm, VerifyCodeForm, UserCreationForm, LoginForm
 from django.views import View
+from django.contrib.auth.views import LoginView as DjangoLoginView
 
 
+class CustomLoginView(DjangoLoginView):
+    template_name = "account/login.html"
+    authentication_form = LoginForm
+    redirect_authenticated_user = True
 
-class LoginView(View):
-    def get(self, request):
-        form = LoginForm()
-        return render(request, 'account/login.html', {'form': form})
-
-    def post(self, request):
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            cd = form.cleaned_data
-            userr = authenticate(username=cd['email'], password=cd['password'])
-            if userr is not None:
-                login(request, userr)
-                return redirect('home:home')
-            else:
-                form.add_error(None, 'Username or password is incorrect')
-        return render(request, 'account/login.html', {'form': form})
+    def get_success_url(self):
+        return reverse_lazy("home:home")
 
 
 class AddAddressView(View):

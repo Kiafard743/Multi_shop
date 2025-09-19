@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import ReadOnlyPasswordHashField
+from django.contrib.auth.forms import ReadOnlyPasswordHashField, AuthenticationForm
 from django.core.exceptions import ValidationError
 
 from .models import User, Address, EmailVerification
@@ -38,15 +38,22 @@ class UserChangeForm(forms.ModelForm):
         fields = ["email", "password", "is_active", "is_admin"]
 
 
-class LoginForm(forms.Form):
-    email = forms.CharField(widget=forms.TextInput(attrs={"class": "form-control"}))
+
+class LoginForm(AuthenticationForm):
+    username = forms.EmailField(
+        widget=forms.EmailInput(attrs={"class": "form-control"}),
+        label="ایمیل"
+    )
     password = forms.CharField(widget=forms.PasswordInput(attrs={"class": "form-control"}))
 
-    def clean_email(self):
-        email = self.cleaned_data.get('email')
+    def clean_username(self):
+        email = self.cleaned_data.get("username")
         if not User.objects.filter(email=email).exists():
-            raise forms.ValidationError("This email is not registered.")
+            raise forms.ValidationError("این ایمیل ثبت نشده است.")
         return email
+
+
+
 
 
 class AddressCreationForm(forms.ModelForm):
