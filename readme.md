@@ -24,8 +24,8 @@
 ## 🚀 نحوه اجرا
 
 ```bash
-git clone https://github.com/username/project-name.git
-cd project-name
+git clone https://github.com/Kiafard743/Multi_shop
+cd Multi_shop
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
