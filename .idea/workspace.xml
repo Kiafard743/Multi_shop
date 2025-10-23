@@ -4,16 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ccba087-ae5a-4f76-964a-2d7bd54f7246" name="Changes" comment="noskhe aval">
-      <change beforePath="$PROJECT_DIR$/.idea/Multi_shop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Multi_shop.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="3ccba087-ae5a-4f76-964a-2d7bd54f7246" name="Changes" comment="view , form jadid baraye login">
+      <change afterPath="$PROJECT_DIR$/products/api_views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/products/serializers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account/templates/account/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/account/templates/account/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/cart/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Multi_shop/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Multi_shop/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Multi_shop/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Multi_shop/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/products/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +28,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="Python Script" />
         <option value="Dockerfile" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -218,7 +218,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756984342224</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="view , form jadid baraye login">
+      <option name="closed" value="true" />
+      <created>1758291539239</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1758291539239</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,6 +261,7 @@
     <MESSAGE value="email sender" />
     <MESSAGE value="ezafe shodan kamel filter dar product_list" />
     <MESSAGE value="noskhe aval" />
-    <option name="LAST_COMMIT_MESSAGE" value="noskhe aval" />
+    <MESSAGE value="view , form jadid baraye login" />
+    <option name="LAST_COMMIT_MESSAGE" value="view , form jadid baraye login" />
   </component>
 </project>

@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'cart.apps.CartConfig',
     'widget_tweaks',
     'django_cleanup.apps.CleanupConfig',
-    'django_render_partial'
+    'django_render_partial',
+    'rest_framework'
 
 ]
 
@@ -146,3 +147,8 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 CSRF_TRUSTED_ORIGINS = [
     "https://941d7935aebd.ngrok-free.app",
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 3
+}
